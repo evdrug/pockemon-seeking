@@ -7,11 +7,10 @@ class Pokemon(models.Model):
                                 max_length=200)
     title_jp = models.CharField(verbose_name='Имя на японском', max_length=200)
     image = models.ImageField(verbose_name='Картинка')
-    description = models.TextField(verbose_name='Описание', null=True,
-                                   blank=True)
+    description = models.TextField(verbose_name='Описание', blank=True)
     previous_evolution = models.ForeignKey("self",
                                            verbose_name='из кого эволюционирует',
-                                           on_delete=models.CASCADE,
+                                           on_delete=models.SET_NULL,
                                            related_name='next_evolution',
                                            null=True,
                                            blank=True)
